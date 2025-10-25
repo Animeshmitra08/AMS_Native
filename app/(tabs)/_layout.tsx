@@ -1,35 +1,31 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { BackHandler, useColorScheme, View } from 'react-native';
+import { ActivityIndicator, Icon, MD3DarkTheme, MD3LightTheme, PaperProvider, Snackbar, Text } from 'react-native-paper';
+import DrawerNavigator from '../(drawer)/DrawerNavigator';
 
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+const lightTheme = {
+    ...MD3LightTheme,
+    colors: {
+      ...MD3LightTheme.colors,
+      primary: '#111b72ff',
+      accent: '#3498db',
+      secondary: '#3498db',
+      surface: '#ffffff',
+      text: '#34495e',
+      placeholder: '#7f8c8d',
+      error: '#e74c3c',
+    },
+    roundness: 8,
+  };
+
+export default function TabsLayout() {
+  
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
-    </Tabs>
+    <PaperProvider theme={lightTheme}>
+
+      <DrawerNavigator />
+    </PaperProvider>
   );
 }
