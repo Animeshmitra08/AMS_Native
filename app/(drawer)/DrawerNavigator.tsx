@@ -3,11 +3,15 @@ import { Alert, Dimensions, StyleSheet, useColorScheme, View } from "react-nativ
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer";
 import { Avatar, Button, Divider, Text } from "react-native-paper";
 import HomeScreen from "../Screens/HomeScreen";
+import TestScreen from "../Screens/TestScreen";
 
 const { width } = Dimensions.get("window");
 
 export type DrawerParamList = {
   Home: undefined;
+  Test: undefined; // Here the name of the screen is needed to be "Test" to match the Drawer.Screen name
+  //add more screens here as needed
+  // you can define params for each screen if needed
 };
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
@@ -36,6 +40,15 @@ export default function DrawerNavigator() {
         component={HomeScreen}
         options={{
           drawerLabel: "Home",
+          headerTitleStyle: { fontWeight: "700", fontSize: 20 },
+        }}
+      />
+
+      <Drawer.Screen
+        name="Test"
+        component={TestScreen}
+        options={{
+          drawerLabel: "Test",
           headerTitleStyle: { fontWeight: "700", fontSize: 20 },
         }}
       />

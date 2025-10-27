@@ -1,7 +1,7 @@
 {
   "name": "expo-template-ams_dev",
   "main": "expo-router/entry",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "A custom Expo template with preconfigured UI and dependencies",
   "keywords": [
     "expo",
